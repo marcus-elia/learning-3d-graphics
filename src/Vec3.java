@@ -104,4 +104,24 @@ public class Vec3
     {
         return v1.crossProduct(v2);
     }
+
+    // =====================================
+    //
+    //             Operators
+    //
+    // =====================================
+    // This is an equality test
+    public boolean is(double x2, double y2, double z2)
+    {
+        return x == x2 && y == y2 && z == z2;
+    }
+    public boolean is(Vec3 v)
+    {
+        return this.is(v.x, v.y, v.z);
+    }
+
+    public String toString()
+    {
+        return "(" + x + "," + y + "," + z + ")";
+    }
 }
