@@ -3,6 +3,7 @@ public class Testing
     public static void main(String[] args)
     {
         testVec3();
+        testVec4();
     }
 
     public static void testVec3()
@@ -90,6 +91,38 @@ public class Testing
             System.out.println("Expected " + exp + ", but observed " + cross);
         }
 
+
+        if(passed)
+        {
+            System.out.println("All tests passed.");
+        }
+    }
+
+    public static void testVec4()
+    {
+        System.out.println("\nTesting the Vec4 class.");
+        boolean passed = true;
+        Vec4 v;
+        Vec4 exp;
+
+        v = new Vec4(2,4,6,2);
+        v.divideByW();
+        exp = new Vec4(1,2,3,1);
+        if(!v.is(exp, 0.01))
+        {
+            passed = false;
+            System.out.println("FAILED test of divide by w != 0.");
+            System.out.println("Expected " + exp + ", but observed " + v);
+        }
+        v = new Vec4(2,4,6,0);
+        v.divideByW();
+        exp = new Vec4(2,4,6,0);
+        if(!v.is(exp, 0.01))
+        {
+            passed = false;
+            System.out.println("FAILED test of divide by w = 0.");
+            System.out.println("Expected " + exp + ", but observed " + v);
+        }
 
         if(passed)
         {
