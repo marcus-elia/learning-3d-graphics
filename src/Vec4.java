@@ -104,4 +104,27 @@ public class Vec4
     {
         return v1.dotProduct(v2);
     }
+
+    // =====================================
+    //
+    //             Operators
+    //
+    // =====================================
+    // This is an equality test
+    public boolean is(double x2, double y2, double z2, double w2, double tolerance)
+    {
+        return Math.abs(x - x2) < tolerance &&
+                Math.abs(y - y2) < tolerance &&
+                Math.abs(z - z2) < tolerance &&
+                Math.abs(w - w2) < tolerance;
+    }
+    public boolean is(Vec4 v, double tolerance)
+    {
+        return this.is(v.x, v.y, v.z, v.w, tolerance);
+    }
+
+    public String toString()
+    {
+        return "(" + x + "," + y + "," + z + "," + w + ")";
+    }
 }
