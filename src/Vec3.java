@@ -111,13 +111,15 @@ public class Vec3
     //
     // =====================================
     // This is an equality test
-    public boolean is(double x2, double y2, double z2)
+    public boolean is(double x2, double y2, double z2, double tolerance)
     {
-        return x == x2 && y == y2 && z == z2;
+        return Math.abs(x - x2) < tolerance &&
+               Math.abs(y - y2) < tolerance &&
+               Math.abs(z - z2) < tolerance;
     }
-    public boolean is(Vec3 v)
+    public boolean is(Vec3 v, double tolerance)
     {
-        return this.is(v.x, v.y, v.z);
+        return this.is(v.x, v.y, v.z, tolerance);
     }
 
     public String toString()
