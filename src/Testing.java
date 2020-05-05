@@ -4,6 +4,7 @@ public class Testing
     {
         testVec3();
         testVec4();
+        testMat4();
     }
 
     public static void testVec3()
@@ -122,6 +123,54 @@ public class Testing
             passed = false;
             System.out.println("FAILED test of divide by w = 0.");
             System.out.println("Expected " + exp + ", but observed " + v);
+        }
+
+        if(passed)
+        {
+            System.out.println("All tests passed.");
+        }
+    }
+
+    public static void testMat4()
+    {
+        System.out.println("\nTesting the Mat4 class.");
+        boolean passed = true;
+        Mat4 m1, m2;
+        Mat4 exp;
+        Vec4 v;
+        Vec4 ans;
+
+        // Left multiply
+        m1 = new Mat4(new double[]{1,2,3,4,2,3,4,5,3,4,5,6,4,5,6,7});
+        v = new Vec4(1,3,5,7);
+        ans = new Vec4(50, 66, 82, 98);
+        if(!(m1.leftMultiply(v).is(ans, 0.01)))
+        {
+            passed = false;
+            System.out.println("FAILED left multiplying matrix by vector.");
+            System.out.println("Expected " + ans + ", but observed " + m1.leftMultiply(v));
+        }
+
+        // Right multiply
+        m1 = new Mat4(new double[]{1,2,3,4,2,3,4,5,3,4,5,6,4,5,6,7});
+        v = new Vec4(1,3,5,7);
+        ans = new Vec4(50, 66, 82, 98);
+        if(!(m1.rightMultiply(v).is(ans, 0.01)))
+        {
+            passed = false;
+            System.out.println("FAILED right multiplying matrix by vector.");
+            System.out.println("Expected " + ans + ", but observed " + m1.rightMultiply(v));
+        }
+
+        // Matrix times matrix
+        m1 = new Mat4(new double[]{1,2,3,4,2,3,4,5,3,4,5,6,4,5,6,7});
+        m2 = new Mat4(new double[]{4,5,6,7,3,4,5,6,2,3,4,5,1,2,3,4});
+        exp = new Mat4(new double[]{60,82,104,126,50,68,86,104,40,54,68,82,30,40,50,60});
+        if(!(m1.multiply(m2).is(exp, 0.01)))
+        {
+            passed = false;
+            System.out.println("FAILED multiplying generic matrices.");
+            System.out.println("Expected " + exp + ", but observed " + m1.multiply(m2));
         }
 
         if(passed)
