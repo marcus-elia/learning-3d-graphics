@@ -91,4 +91,21 @@ public class Mat4
     {
         return m1.multiply(m2);
     }
+
+    // =====================================
+    //
+    //             Operators
+    //
+    // =====================================
+    // This is an equality test
+    public boolean is(Mat4 m, double tolerance)
+    {
+        return col0.is(m.col0, tolerance) && col1.is(m.col1, tolerance) &&
+                col2.is(m.col2, tolerance) && col3.is(m.col3, tolerance);
+    }
+
+    public String toString()
+    {
+        return col0.toString() + " " + col1.toString() + " " + col2.toString() + " " + col3.toString();
+    }
 }
