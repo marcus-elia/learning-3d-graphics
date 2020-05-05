@@ -14,12 +14,12 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     private boolean running = false;
 
-    //private GameManager gameManager;
+    private GameManager gameManager;
 
     public Game() throws IOException
     {
 
-        //gameManager = new GameManager(WIDTH, HEIGHT);
+        gameManager = new GameManager(WIDTH, HEIGHT);
         //this.addMouseListener(new MouseInput(gameManager));
         //this.addMouseMotionListener(new MouseMotionInput(gameManager));
         new Window(WIDTH, HEIGHT, "Graphics", this);
@@ -78,7 +78,7 @@ public class Game extends Canvas implements Runnable
 
     private void tick()
     {
-        //gameManager.tick();
+        gameManager.tick();
     }
 
     private void render()
@@ -93,9 +93,7 @@ public class Game extends Canvas implements Runnable
 
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
-
-        // Draw the background each frame
-        //gameManager.render(g2d);
+        gameManager.render(g2d);
 
         g2d.dispose();
         bs.show();
